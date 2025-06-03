@@ -2,7 +2,19 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Shield, Upload, CheckCircle, Sparkles, Lock, Award } from "lucide-react"
+import {
+  Shield,
+  Upload,
+  CheckCircle,
+  Sparkles,
+  Award,
+  FileText,
+  ImageIcon,
+  Music,
+  Code,
+  Film,
+  Search,
+} from "lucide-react"
 
 export default function Home() {
   return (
@@ -19,21 +31,32 @@ export default function Home() {
             </span>
           </div>
           <nav className="hidden md:flex items-center gap-6">
-            <Link href="#" className="text-sm font-medium transition-colors hover:text-purple-600">
-              How It Works
+            <Link href="/search" className="text-sm font-medium transition-colors hover:text-purple-600">
+              Search Files
             </Link>
             <Link href="#" className="text-sm font-medium transition-colors hover:text-purple-600">
-              Services
+              How It Works
             </Link>
             <Link href="#" className="text-sm font-medium transition-colors hover:text-purple-600">
               About Us
             </Link>
           </nav>
           <div className="flex items-center gap-4">
+            <Link href="/search">
+              <Button variant="outline" className="gap-2 border-purple-200 text-purple-600 hover:bg-purple-50">
+                <Search className="h-4 w-4" />
+                Search
+              </Button>
+            </Link>
             <Link href="/upload">
               <Button className="gap-2 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 shadow-lg">
                 <Upload className="h-4 w-4" />
                 Upload File
+              </Button>
+            </Link>
+            <Link href="/login">
+              <Button variant="outline" className="border-purple-200 text-purple-600 hover:bg-purple-50">
+                Sign In
               </Button>
             </Link>
           </div>
@@ -146,7 +169,7 @@ export default function Home() {
                 Secure your creative works, inventions, and ideas with our comprehensive IP protection services. Join
                 thousands of creators who trust us with their most valuable assets.
               </p>
-              <div className="mt-8">
+              <div className="mt-8 flex gap-4">
                 <Link href="/upload">
                   <Button
                     size="lg"
@@ -154,6 +177,16 @@ export default function Home() {
                   >
                     <Upload className="h-5 w-5" />
                     Upload Your Work
+                  </Button>
+                </Link>
+                <Link href="/search">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="gap-2 border-purple-300 text-purple-600 hover:bg-purple-50 text-lg px-8 py-6"
+                  >
+                    <Search className="h-5 w-5" />
+                    Search Files
                   </Button>
                 </Link>
               </div>
@@ -164,111 +197,118 @@ export default function Home() {
         <section className="container py-12 md:py-24 lg:py-32">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">
-              Choose Your Protection Plan
+              What We Protect
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              From individual creators to enterprise businesses, we have the right protection plan for your needs.
+              Our comprehensive IP protection covers all forms of creative and intellectual works
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-teal-500"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-400 to-blue-500"></div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-emerald-100 rounded-lg">
-                  <Lock className="h-6 w-6 text-emerald-600" />
+                <div className="p-3 bg-purple-100 rounded-lg">
+                  <FileText className="h-8 w-8 text-purple-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Basic</h3>
+                <h3 className="text-xl font-bold text-gray-900">Documents & Writing</h3>
               </div>
-              <p className="text-gray-600 mb-6">Essential protection for individual creators and small businesses.</p>
-              <div className="mb-8">
-                <span className="text-4xl font-bold text-gray-900">$0</span>
-                <span className="text-gray-500"> / month for basic registration</span>
-              </div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center">
-                  <CheckCircle className="mr-3 h-5 w-5 text-emerald-500" />
-                  <span className="text-gray-700">Digital timestamp certification</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="mr-3 h-5 w-5 text-emerald-500" />
-                  <span className="text-gray-700">Basic ownership documentation</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="mr-3 h-5 w-5 text-emerald-500" />
-                  <span className="text-gray-700">Email notifications</span>
-                </li>
+              <p className="text-gray-600 mb-4">
+                Protect your written works, research papers, manuscripts, and business documents.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>• Research papers & articles</li>
+                <li>• Books & manuscripts</li>
+                <li>• Business plans & proposals</li>
+                <li>• Technical documentation</li>
               </ul>
-              <Button className="w-full bg-emerald-600 hover:bg-emerald-700" variant="outline">
-                Get started
-              </Button>
-            </div>
-
-            <div className="rounded-2xl border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-blue-50 p-8 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden transform scale-105">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-blue-600"></div>
-              <div className="absolute top-4 right-4 bg-gradient-to-r from-purple-500 to-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium">
-                Most Popular
-              </div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-purple-100 rounded-lg">
-                  <Award className="h-6 w-6 text-purple-600" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Professional</h3>
-              </div>
-              <p className="text-gray-600 mb-6">Advanced protection with legal assistance for businesses.</p>
-              <div className="mb-8">
-                <span className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                  $19.99
-                </span>
-                <span className="text-gray-500"> / month</span>
-              </div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center">
-                  <CheckCircle className="mr-3 h-5 w-5 text-purple-500" />
-                  <span className="text-gray-700">All Basic features</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="mr-3 h-5 w-5 text-purple-500" />
-                  <span className="text-gray-700">Legal document preparation</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="mr-3 h-5 w-5 text-purple-500" />
-                  <span className="text-gray-700">IP infringement monitoring</span>
-                </li>
-              </ul>
-              <Button className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 shadow-lg">
-                Get started
-              </Button>
             </div>
 
             <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-400 to-blue-500"></div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-cyan-100 rounded-lg">
-                  <Sparkles className="h-6 w-6 text-cyan-600" />
+                <div className="p-3 bg-cyan-100 rounded-lg">
+                  <ImageIcon className="h-8 w-8 text-cyan-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Enterprise</h3>
+                <h3 className="text-xl font-bold text-gray-900">Visual Arts</h3>
               </div>
-              <p className="text-gray-600 mb-6">Complete IP protection suite with dedicated legal support.</p>
-              <div className="mb-8">
-                <span className="text-4xl font-bold text-gray-900">$99.99</span>
-                <span className="text-gray-500"> / month</span>
-              </div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center">
-                  <CheckCircle className="mr-3 h-5 w-5 text-cyan-500" />
-                  <span className="text-gray-700">All Professional features</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="mr-3 h-5 w-5 text-cyan-500" />
-                  <span className="text-gray-700">Dedicated IP attorney</span>
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="mr-3 h-5 w-5 text-cyan-500" />
-                  <span className="text-gray-700">Global IP registration assistance</span>
-                </li>
+              <p className="text-gray-600 mb-4">
+                Secure your visual creations, designs, and artistic works from unauthorized use.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>• Digital artwork & illustrations</li>
+                <li>• Photography & images</li>
+                <li>• Logo & brand designs</li>
+                <li>• UI/UX designs</li>
               </ul>
-              <Button className="w-full bg-cyan-600 hover:bg-cyan-700">Get started</Button>
+            </div>
+
+            <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-teal-500"></div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 bg-emerald-100 rounded-lg">
+                  <Music className="h-8 w-8 text-emerald-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Audio & Music</h3>
+              </div>
+              <p className="text-gray-600 mb-4">Protect your musical compositions, recordings, and audio content.</p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>• Original music compositions</li>
+                <li>• Podcast episodes</li>
+                <li>• Voice recordings</li>
+                <li>• Sound effects & samples</li>
+              </ul>
+            </div>
+
+            <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-red-500"></div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 bg-orange-100 rounded-lg">
+                  <Code className="h-8 w-8 text-orange-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Software & Code</h3>
+              </div>
+              <p className="text-gray-600 mb-4">Secure your software applications, algorithms, and source code.</p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>• Source code & algorithms</li>
+                <li>• Mobile applications</li>
+                <li>• Web applications</li>
+                <li>• Software libraries</li>
+              </ul>
+            </div>
+
+            <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-400 to-rose-500"></div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 bg-pink-100 rounded-lg">
+                  <Film className="h-8 w-8 text-pink-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Video Content</h3>
+              </div>
+              <p className="text-gray-600 mb-4">Protect your video productions, animations, and multimedia content.</p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>• Video productions</li>
+                <li>• Animations & motion graphics</li>
+                <li>• Educational content</li>
+                <li>• Marketing videos</li>
+              </ul>
+            </div>
+
+            <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-400 to-purple-500"></div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 bg-indigo-100 rounded-lg">
+                  <Award className="h-8 w-8 text-indigo-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Inventions & Ideas</h3>
+              </div>
+              <p className="text-gray-600 mb-4">Document and protect your innovative ideas and inventions.</p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>• Product concepts</li>
+                <li>• Technical innovations</li>
+                <li>• Business methods</li>
+                <li>• Process improvements</li>
+              </ul>
             </div>
           </div>
         </section>
