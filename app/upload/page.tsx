@@ -244,6 +244,7 @@ export default function UploadPage() {
                         variant="outline"
                         size="lg"
                         className="border-cyan-300 text-cyan-600 hover:bg-cyan-50 hover:border-cyan-400"
+                        onClick={() => document.getElementById("image-file")?.click()}
                       >
                         Browse Files
                       </Button>
@@ -251,32 +252,154 @@ export default function UploadPage() {
                   </div>
                 </TabsContent>
 
-                <TabsContent value="audio" className="space-y-4">
-                  <div className="flex items-center justify-center h-60 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl border-2 border-dashed border-emerald-300">
-                    <div className="text-center">
-                      <Music className="h-16 w-16 text-emerald-600 mx-auto mb-4" />
-                      <p className="text-lg text-gray-700 font-medium">Audio upload form coming soon</p>
-                      <p className="text-gray-500">Support for MP3, WAV, FLAC files</p>
+                <TabsContent value="audio" className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="audio-title" className="text-gray-700 font-medium">
+                        Title of Work
+                      </Label>
+                      <Input
+                        id="audio-title"
+                        placeholder="Enter the title of your audio"
+                        className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="audio-description" className="text-gray-700 font-medium">
+                        Description
+                      </Label>
+                      <Input
+                        id="audio-description"
+                        placeholder="Briefly describe your audio"
+                        className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="audio-file" className="text-gray-700 font-medium">
+                      Upload Audio
+                    </Label>
+                    <div className="border-2 border-dashed border-emerald-300 rounded-xl p-12 text-center bg-gradient-to-br from-emerald-50 to-teal-50 hover:from-emerald-100 hover:to-teal-100 transition-all duration-300">
+                      <div className="relative mb-4">
+                        <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full blur-lg opacity-30"></div>
+                        <Music className="h-12 w-12 mx-auto text-emerald-600 relative z-10" />
+                      </div>
+                      <p className="text-lg text-gray-700 mb-2 font-medium">
+                        Drag and drop your audio file here, or click to browse
+                      </p>
+                      <p className="text-sm text-gray-500 mb-4">Supports MP3, WAV, FLAC, AAC (Max 100MB)</p>
+                      <Input id="audio-file" type="file" className="hidden" accept="audio/*" />
+                      <Button
+                        variant="outline"
+                        size="lg"
+                        className="border-emerald-300 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-400"
+                        onClick={() => document.getElementById("audio-file")?.click()}
+                      >
+                        Browse Files
+                      </Button>
                     </div>
                   </div>
                 </TabsContent>
 
-                <TabsContent value="code" className="space-y-4">
-                  <div className="flex items-center justify-center h-60 bg-gradient-to-br from-orange-50 to-red-50 rounded-xl border-2 border-dashed border-orange-300">
-                    <div className="text-center">
-                      <Code className="h-16 w-16 text-orange-600 mx-auto mb-4" />
-                      <p className="text-lg text-gray-700 font-medium">Code upload form coming soon</p>
-                      <p className="text-gray-500">Support for all programming languages</p>
+                <TabsContent value="code" className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="code-title" className="text-gray-700 font-medium">
+                        Title of Work
+                      </Label>
+                      <Input
+                        id="code-title"
+                        placeholder="Enter the title of your code"
+                        className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="code-description" className="text-gray-700 font-medium">
+                        Description
+                      </Label>
+                      <Input
+                        id="code-description"
+                        placeholder="Briefly describe your code"
+                        className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="code-file" className="text-gray-700 font-medium">
+                      Upload Code
+                    </Label>
+                    <div className="border-2 border-dashed border-orange-300 rounded-xl p-12 text-center bg-gradient-to-br from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100 transition-all duration-300">
+                      <div className="relative mb-4">
+                        <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-400 rounded-full blur-lg opacity-30"></div>
+                        <Code className="h-12 w-12 mx-auto text-orange-600 relative z-10" />
+                      </div>
+                      <p className="text-lg text-gray-700 mb-2 font-medium">
+                        Drag and drop your code files here, or click to browse
+                      </p>
+                      <p className="text-sm text-gray-500 mb-4">Supports JS, TS, PY, JAVA, ZIP, RAR (Max 50MB)</p>
+                      <Input
+                        id="code-file"
+                        type="file"
+                        className="hidden"
+                        accept=".js,.ts,.py,.java,.zip,.rar,.txt,.md"
+                      />
+                      <Button
+                        variant="outline"
+                        size="lg"
+                        className="border-orange-300 text-orange-600 hover:bg-orange-50 hover:border-orange-400"
+                        onClick={() => document.getElementById("code-file")?.click()}
+                      >
+                        Browse Files
+                      </Button>
                     </div>
                   </div>
                 </TabsContent>
 
-                <TabsContent value="video" className="space-y-4">
-                  <div className="flex items-center justify-center h-60 bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl border-2 border-dashed border-pink-300">
-                    <div className="text-center">
-                      <Film className="h-16 w-16 text-pink-600 mx-auto mb-4" />
-                      <p className="text-lg text-gray-700 font-medium">Video upload form coming soon</p>
-                      <p className="text-gray-500">Support for MP4, AVI, MOV files</p>
+                <TabsContent value="video" className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="video-title" className="text-gray-700 font-medium">
+                        Title of Work
+                      </Label>
+                      <Input
+                        id="video-title"
+                        placeholder="Enter the title of your video"
+                        className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="video-description" className="text-gray-700 font-medium">
+                        Description
+                      </Label>
+                      <Input
+                        id="video-description"
+                        placeholder="Briefly describe your video"
+                        className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="video-file" className="text-gray-700 font-medium">
+                      Upload Video
+                    </Label>
+                    <div className="border-2 border-dashed border-pink-300 rounded-xl p-12 text-center bg-gradient-to-br from-pink-50 to-rose-50 hover:from-pink-100 hover:to-rose-100 transition-all duration-300">
+                      <div className="relative mb-4">
+                        <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-rose-400 rounded-full blur-lg opacity-30"></div>
+                        <Film className="h-12 w-12 mx-auto text-pink-600 relative z-10" />
+                      </div>
+                      <p className="text-lg text-gray-700 mb-2 font-medium">
+                        Drag and drop your video file here, or click to browse
+                      </p>
+                      <p className="text-sm text-gray-500 mb-4">Supports MP4, AVI, MOV, WMV (Max 500MB)</p>
+                      <Input id="video-file" type="file" className="hidden" accept="video/*" />
+                      <Button
+                        variant="outline"
+                        size="lg"
+                        className="border-pink-300 text-pink-600 hover:bg-pink-50 hover:border-pink-400"
+                        onClick={() => document.getElementById("video-file")?.click()}
+                      >
+                        Browse Files
+                      </Button>
                     </div>
                   </div>
                 </TabsContent>
