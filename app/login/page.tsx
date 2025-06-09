@@ -14,22 +14,22 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50">
       <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md">
-        <div className="container flex h-16 items-center justify-between">
+        <div className="container flex h-16 items-center justify-between px-4">
           <Link href="/">
             <div className="flex items-center gap-2">
               <div className="relative">
-                <Shield className="h-8 w-8 text-purple-600" />
-                <Sparkles className="absolute -top-1 -right-1 h-4 w-4 text-cyan-500" />
+                <Shield className="h-6 sm:h-8 w-6 sm:w-8 text-purple-600" />
+                <Sparkles className="absolute -top-1 -right-1 h-3 sm:h-4 w-3 sm:w-4 text-cyan-500" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">
+              <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">
                 IPProtect
               </span>
             </div>
           </Link>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-600">Don't have an account?</span>
+          <div className="flex items-center gap-2 sm:gap-4">
+            <span className="text-xs sm:text-sm text-gray-600 hidden sm:block">Don't have an account?</span>
             <Link href="/signup">
-              <Button variant="outline" className="border-purple-200 text-purple-600 hover:bg-purple-50">
+              <Button variant="outline" className="border-purple-200 text-purple-600 hover:bg-purple-50 text-sm">
                 Sign Up
               </Button>
             </Link>
@@ -37,11 +37,11 @@ export default function LoginPage() {
         </div>
       </header>
 
-      <main className="flex-1 container py-12 relative">
+      <main className="flex-1 container py-6 sm:py-12 relative px-4">
         <div className="absolute top-10 left-10 w-32 h-32 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
         <div className="absolute top-20 right-10 w-32 h-32 bg-cyan-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
 
-        <div className="mx-auto max-w-md relative z-10">
+        <div className="mx-auto max-w-sm sm:max-w-md relative z-10">
           <Card className="shadow-2xl border-0 bg-white/80 backdrop-blur-sm">
             <CardHeader className="text-center space-y-4">
               <div className="mx-auto relative">

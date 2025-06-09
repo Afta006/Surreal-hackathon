@@ -133,14 +133,14 @@ export default function SearchPage() {
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50">
       <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md">
-        <div className="container flex h-16 items-center justify-between">
+        <div className="container flex h-16 items-center justify-between px-4">
           <Link href="/">
             <div className="flex items-center gap-2">
               <div className="relative">
-                <Shield className="h-8 w-8 text-purple-600" />
-                <Sparkles className="absolute -top-1 -right-1 h-4 w-4 text-cyan-500" />
+                <Shield className="h-6 sm:h-8 w-6 sm:w-8 text-purple-600" />
+                <Sparkles className="absolute -top-1 -right-1 h-3 sm:h-4 w-3 sm:w-4 text-cyan-500" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">
+              <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">
                 IPProtect
               </span>
             </div>
@@ -149,15 +149,15 @@ export default function SearchPage() {
             <Link href="/upload" className="text-sm font-medium transition-colors hover:text-purple-600">
               Upload Files
             </Link>
-            <Link href="#" className="text-sm font-medium transition-colors hover:text-purple-600">
+            <Link href="/how-it-works" className="text-sm font-medium transition-colors hover:text-purple-600">
               How It Works
             </Link>
-            <Link href="#" className="text-sm font-medium transition-colors hover:text-purple-600">
+            <Link href="/about" className="text-sm font-medium transition-colors hover:text-purple-600">
               About Us
             </Link>
           </nav>
-          <div className="flex items-center gap-4">
-            <Link href="/login">
+          <div className="flex items-center gap-2">
+            <Link href="/login" className="hidden sm:block">
               <Button variant="outline" className="border-purple-200 text-purple-600 hover:bg-purple-50">
                 Sign In
               </Button>
@@ -172,10 +172,10 @@ export default function SearchPage() {
 
         <div className="mx-auto max-w-6xl relative z-10">
           <div className="mb-8 text-center">
-            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
               Search Protected Files
             </h1>
-            <p className="text-gray-600 text-lg">Find and manage your intellectual property submissions</p>
+            <p className="text-gray-600 text-base sm:text-lg">Find and manage your intellectual property submissions</p>
           </div>
 
           <Card className="shadow-2xl border-0 bg-white/80 backdrop-blur-sm mb-8">
@@ -190,8 +190,8 @@ export default function SearchPage() {
             </CardHeader>
             <CardContent className="p-8">
               <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="md:col-span-2 space-y-2">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                  <div className="lg:col-span-2 space-y-2">
                     <Label htmlFor="search" className="text-gray-700 font-medium">
                       Search Query
                     </Label>
@@ -266,45 +266,47 @@ export default function SearchPage() {
                     className="bg-white/80 backdrop-blur-sm hover:shadow-lg transition-all duration-300"
                   >
                     <CardContent className="p-6">
-                      <div className="flex items-start justify-between">
-                        <div className="flex items-start gap-4 flex-1">
-                          <div className={`p-3 rounded-lg ${getTypeColor(file.type)}`}>{getTypeIcon(file.type)}</div>
+                      <div className="flex flex-col lg:flex-row items-start justify-between gap-4">
+                        <div className="flex items-start gap-4 flex-1 min-w-0">
+                          <div className={`p-3 rounded-lg ${getTypeColor(file.type)} flex-shrink-0`}>
+                            {getTypeIcon(file.type)}
+                          </div>
                           <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-3 mb-2">
+                            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
                               <h3 className="text-lg font-semibold text-gray-900 truncate">{file.name}</h3>
                               <Badge
                                 variant={file.status === "Protected" ? "default" : "secondary"}
                                 className={
                                   file.status === "Protected"
-                                    ? "bg-emerald-100 text-emerald-700 hover:bg-emerald-200"
-                                    : "bg-yellow-100 text-yellow-700 hover:bg-yellow-200"
+                                    ? "bg-emerald-100 text-emerald-700 hover:bg-emerald-200 w-fit"
+                                    : "bg-yellow-100 text-yellow-700 hover:bg-yellow-200 w-fit"
                                 }
                               >
                                 {file.status}
                               </Badge>
                             </div>
-                            <p className="text-gray-600 mb-3">{file.description}</p>
-                            <div className="flex items-center gap-6 text-sm text-gray-500">
+                            <p className="text-gray-600 mb-3 text-sm sm:text-base">{file.description}</p>
+                            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 text-xs sm:text-sm text-gray-500">
                               <div className="flex items-center gap-1">
                                 <span className="font-medium">ID:</span>
                                 <span className="font-mono">{file.id}</span>
                               </div>
                               <div className="flex items-center gap-1">
-                                <User className="h-4 w-4" />
+                                <User className="h-3 w-3 sm:h-4 sm:w-4" />
                                 <span>{file.owner}</span>
                               </div>
                               <div className="flex items-center gap-1">
-                                <Calendar className="h-4 w-4" />
+                                <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
                                 <span>{file.uploadDate}</span>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div className="flex items-center gap-2 ml-4">
+                        <div className="flex items-center gap-2 w-full lg:w-auto lg:ml-4">
                           <Button
                             variant="outline"
                             size="sm"
-                            className="border-purple-200 text-purple-600 hover:bg-purple-50"
+                            className="flex-1 lg:flex-none border-purple-200 text-purple-600 hover:bg-purple-50"
                           >
                             <Eye className="h-4 w-4 mr-1" />
                             View
@@ -312,7 +314,7 @@ export default function SearchPage() {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="border-cyan-200 text-cyan-600 hover:bg-cyan-50"
+                            className="flex-1 lg:flex-none border-cyan-200 text-cyan-600 hover:bg-cyan-50"
                           >
                             <Download className="h-4 w-4 mr-1" />
                             Download

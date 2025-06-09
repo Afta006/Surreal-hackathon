@@ -34,27 +34,27 @@ export default function Home() {
             <Link href="/search" className="text-sm font-medium transition-colors hover:text-purple-600">
               Search Files
             </Link>
-            <Link href="#" className="text-sm font-medium transition-colors hover:text-purple-600">
+            <Link href="/how-it-works" className="text-sm font-medium transition-colors hover:text-purple-600">
               How It Works
             </Link>
-            <Link href="#" className="text-sm font-medium transition-colors hover:text-purple-600">
+            <Link href="/about" className="text-sm font-medium transition-colors hover:text-purple-600">
               About Us
             </Link>
           </nav>
-          <div className="flex items-center gap-4">
-            <Link href="/search">
+          <div className="flex items-center gap-2">
+            <Link href="/search" className="hidden sm:block">
               <Button variant="outline" className="gap-2 border-purple-200 text-purple-600 hover:bg-purple-50">
                 <Search className="h-4 w-4" />
-                Search
+                <span className="hidden lg:inline">Search</span>
               </Button>
             </Link>
             <Link href="/upload">
               <Button className="gap-2 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 shadow-lg">
                 <Upload className="h-4 w-4" />
-                Upload File
+                <span className="hidden sm:inline">Upload</span>
               </Button>
             </Link>
-            <Link href="/login">
+            <Link href="/login" className="hidden sm:block">
               <Button variant="outline" className="border-purple-200 text-purple-600 hover:bg-purple-50">
                 Sign In
               </Button>
@@ -159,21 +159,21 @@ export default function Home() {
                   />
                 </div>
               </div>
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
                 Protect your{" "}
                 <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
                   intellectual property
                 </span>
               </h1>
-              <p className="mx-auto max-w-[700px] text-gray-600 md:text-xl">
+              <p className="mx-auto max-w-[700px] text-gray-600 text-lg md:text-xl px-4">
                 Secure your creative works, inventions, and ideas with our comprehensive IP protection services. Join
                 thousands of creators who trust us with their most valuable assets.
               </p>
-              <div className="mt-8 flex gap-4">
+              <div className="mt-8 flex flex-col sm:flex-row gap-4 px-4">
                 <Link href="/upload">
                   <Button
                     size="lg"
-                    className="gap-2 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 shadow-xl text-lg px-8 py-6"
+                    className="w-full sm:w-auto gap-2 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 shadow-xl text-lg px-8 py-6"
                   >
                     <Upload className="h-5 w-5" />
                     Upload Your Work
@@ -183,7 +183,7 @@ export default function Home() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="gap-2 border-purple-300 text-purple-600 hover:bg-purple-50 text-lg px-8 py-6"
+                    className="w-full sm:w-auto gap-2 border-purple-300 text-purple-600 hover:bg-purple-50 text-lg px-8 py-6"
                   >
                     <Search className="h-5 w-5" />
                     Search Files
