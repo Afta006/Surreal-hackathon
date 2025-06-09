@@ -1,81 +1,106 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Sparkles } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import { Sparkles, Loader2 } from "lucide-react"
 
 interface AISuggestionsProps {
-  field: string
+  field: "title" | "description"
   value: string
   onSuggestionSelect: (suggestion: string) => void
 }
 
 export function AISuggestions({ field, value, onSuggestionSelect }: AISuggestionsProps) {
   const [suggestions, setSuggestions] = useState<string[]>([])
-  const [loading, setLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [showSuggestions, setShowSuggestions] = useState(false)
 
-  // Generate suggestions based on the current input value
   const generateSuggestions = async () => {
-    if (!value || value.length < 3) return
+    if (!value.trim() || value.length < 3) return
 
-    setLoading(true)
+    setIsLoading(true)
+    setShowSuggestions(true)
 
-    // Simulate AI suggestions (in a real app, this would call an API)
-    // This would be replaced with actual AI API calls in production
-    await new Promise((resolve) => setTimeout(resolve, 800))
+    // Simulate AI API call
+    await new Promise((resolve) => setTimeout(resolve, 1000))
 
-    let generatedSuggestions: string[] = []
+    const titleSuggestions = [
+      "Creative Digital Artwork Collection",
+      "Original Music Composition",
+      "Innovative Software Algorithm",
+      "Unique Brand Logo Design",
+      "Patent-Pending Invention",
+    ]
 
-    if (field === "title") {
-      generatedSuggestions = [
-        `${value} - Enhanced Version`,
-        `Professional ${value}`,
-        `${value} (Copyright Protected)`,
-        `${value} - Original Work`,
-      ]
-    } else if (field === "description") {
-      generatedSuggestions = [
-        `A comprehensive ${value} created for professional use.`,
-        `Original ${value} with unique creative elements.`,
-        `Detailed ${value} with proprietary methodology.`,
-        `Innovative approach to ${value} with distinctive features.`,
-      ]
-    }
+    const descriptionSuggestions = [
+      "A comprehensive collection of original digital artworks showcasing innovative design techniques and creative expression.",
+      "An original musical composition featuring unique melodies and harmonies, created for commercial and artistic purposes.",
+      "A proprietary software algorithm designed to optimize performance and provide innovative solutions for complex problems.",
+      "A distinctive brand logo design that represents the company's values and creates strong visual identity in the marketplace.",
+      "An innovative invention with patent-pending status, offering novel solutions to existing industry challenges.",
+    ]
 
-    setSuggestions(generatedSuggestions)
-    setLoading(false)
+    const relevantSuggestions = field === "title" ? titleSuggestions : descriptionSuggestions
+    setSuggestions(relevantSuggestions.slice(0, 3))
+    setIsLoading(false)
   }
 
-  return (
-    <div className="mt-1">
-      <Button
-        type="button"
-        variant="ghost"
-        size="sm"
-        className="h-7 px-2 text-xs text-purple-600 hover:bg-purple-50 hover:text-purple-700"
-        onClick={generateSuggestions}
-        disabled={loading || !value || value.length < 3}
-      >
-        <Sparkles className="h-3 w-3 mr-1" />
-        {loading ? "Generating..." : "AI Suggestions"}
-      </Button>
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (value.length >= 3) {
+        generateSuggestions()
+      } else {
+        setShowSuggestions(false)
+        setSuggestions([])
+      }
+    }, 500)
 
-      {suggestions.length > 0 && (
-        <div className="mt-2 space-y-1">
-          {suggestions.map((suggestion, index) => (
-            <Button
-              key={index}
-              type="button"
-              variant="outline"
-              size="sm"
-              className="w-full justify-start text-left text-xs h-auto py-1 px-2 border-purple-200 text-purple-700 hover:bg-purple-50"
-              onClick={() => onSuggestionSelect(suggestion)}
-            >
-              {suggestion}
-            </Button>
-          ))}
+    return () => clearTimeout(timer)
+  }, [value, field])
+
+  if (!showSuggestions && !isLoading) return null
+
+  return (
+    <Card className="mt-4 mb-4 border-purple-200 bg-gradient-to-r from-purple-50 to-cyan-50 shadow-md relative z-10">
+      <CardContent className="p-3">
+        <div className="flex items-center gap-2 mb-2">
+          <Sparkles className="h-4 w-4 text-purple-600" />
+          <span className="text-sm font-medium text-purple-700">AI Suggestions</span>
         </div>
-      )}
-    </div>
+
+        {isLoading ? (
+          <div className="flex items-center gap-2 text-sm text-gray-600">
+            <Loader2 className="h-4 w-4 animate-spin" />
+            Generating suggestions...
+          </div>
+        ) : (
+          <div className="space-y-2">
+            {suggestions.map((suggestion, index) => (
+              <Button
+                key={index}
+                variant="ghost"
+                size="sm"
+                className="w-full text-left justify-start h-auto p-2 text-sm hover:bg-purple-100 hover:text-purple-700"
+                onClick={() => {
+                  onSuggestionSelect(suggestion)
+                  setShowSuggestions(false)
+                }}
+              >
+                {suggestion}
+              </Button>
+            ))}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="w-full text-center text-xs text-gray-500 hover:bg-gray-100"
+              onClick={() => setShowSuggestions(false)}
+            >
+              Close suggestions
+            </Button>
+          </div>
+        )}
+      </CardContent>
+    </Card>
   )
 }

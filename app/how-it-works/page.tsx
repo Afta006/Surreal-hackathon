@@ -4,6 +4,8 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Shield, Sparkles, Upload, FileCheck, Clock, CheckCircle, Lock, Globe, Award, Zap } from "lucide-react"
+import { MobileNav } from "@/components/mobile-nav"
+import { SocialMedia } from "@/components/social-media"
 
 export default function HowItWorksPage() {
   return (
@@ -41,13 +43,12 @@ export default function HowItWorksPage() {
                 Sign In
               </Button>
             </Link>
-            <div className="flex sm:hidden">
-              <Link href="/signup">
-                <Button size="sm" variant="outline" className="border-purple-200 text-purple-600 hover:bg-purple-50">
-                  Sign Up
-                </Button>
-              </Link>
-            </div>
+            <Link href="/signup" className="hidden sm:block">
+              <Button className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700">
+                Sign Up
+              </Button>
+            </Link>
+            <MobileNav />
           </div>
         </div>
       </header>
@@ -344,27 +345,35 @@ export default function HowItWorksPage() {
       </main>
 
       <footer className="border-t bg-gradient-to-r from-gray-50 to-gray-100">
-        <div className="container flex flex-col gap-4 py-10 md:flex-row md:items-center md:justify-between px-4">
-          <div className="flex items-center gap-2">
-            <div className="relative">
-              <Shield className="h-6 w-6 text-purple-600" />
-              <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-cyan-500" />
+        <div className="container py-10 px-4">
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-2">
+                <div className="relative">
+                  <Shield className="h-6 w-6 text-purple-600" />
+                  <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-cyan-500" />
+                </div>
+                <span className="text-lg font-bold bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">
+                  IPProtect
+                </span>
+              </div>
+              <SocialMedia />
             </div>
-            <span className="text-lg font-bold bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">
-              IPProtect
-            </span>
-          </div>
-          <p className="text-sm text-gray-500">© 2025 IPProtect. All rights reserved.</p>
-          <div className="flex gap-4">
-            <Link href="#" className="text-sm text-gray-500 hover:text-purple-600 transition-colors">
-              Terms
-            </Link>
-            <Link href="#" className="text-sm text-gray-500 hover:text-purple-600 transition-colors">
-              Privacy
-            </Link>
-            <Link href="#" className="text-sm text-gray-500 hover:text-purple-600 transition-colors">
-              Contact
-            </Link>
+
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t">
+              <p className="text-sm text-gray-500 text-center sm:text-left">© 2025 IPProtect. All rights reserved.</p>
+              <div className="flex flex-wrap gap-4 justify-center sm:justify-end">
+                <Link href="#" className="text-sm text-gray-500 hover:text-purple-600 transition-colors">
+                  Terms
+                </Link>
+                <Link href="#" className="text-sm text-gray-500 hover:text-purple-600 transition-colors">
+                  Privacy
+                </Link>
+                <Link href="#" className="text-sm text-gray-500 hover:text-purple-600 transition-colors">
+                  Contact
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
