@@ -6,8 +6,21 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Shield, Upload, FileText, ImageIcon, Music, Code, Film, Sparkles, CheckCircle } from "lucide-react"
+import { AISuggestions } from "@/components/ai-suggestions"
+import { useState } from "react"
 
 export default function UploadPage() {
+  const [documentTitle, setDocumentTitle] = useState("")
+  const [documentDescription, setDocumentDescription] = useState("")
+  const [imageTitle, setImageTitle] = useState("")
+  const [imageDescription, setImageDescription] = useState("")
+  const [audioTitle, setAudioTitle] = useState("")
+  const [audioDescription, setAudioDescription] = useState("")
+  const [codeTitle, setCodeTitle] = useState("")
+  const [codeDescription, setCodeDescription] = useState("")
+  const [videoTitle, setVideoTitle] = useState("")
+  const [videoDescription, setVideoDescription] = useState("")
+
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50">
       <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md">
@@ -17,7 +30,7 @@ export default function UploadPage() {
               <div className="flex items-center gap-2">
                 <div className="relative">
                   <Shield className="h-6 sm:h-8 w-6 sm:w-8 text-purple-600" />
-                  <Sparkles className="absolute -top-1 -right-1 h-3 sm:h-4 w-3 sm:w-4 text-cyan-500" />
+                  <Sparkles className="absolute -top-1 -right-1 h-3 sm:h-4 w-3 sm:w-3 text-cyan-500" />
                 </div>
                 <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">
                   IPProtect
@@ -42,6 +55,13 @@ export default function UploadPage() {
                 Sign In
               </Button>
             </Link>
+            <div className="flex sm:hidden">
+              <Link href="/signup">
+                <Button size="sm" variant="outline" className="border-purple-200 text-purple-600 hover:bg-purple-50">
+                  Sign Up
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </header>
@@ -168,6 +188,13 @@ export default function UploadPage() {
                         id="title"
                         placeholder="Enter the title of your document"
                         className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                        value={documentTitle}
+                        onChange={(e) => setDocumentTitle(e.target.value)}
+                      />
+                      <AISuggestions
+                        field="title"
+                        value={documentTitle}
+                        onSuggestionSelect={(suggestion) => setDocumentTitle(suggestion)}
                       />
                     </div>
                     <div className="space-y-2">
@@ -178,6 +205,13 @@ export default function UploadPage() {
                         id="description"
                         placeholder="Briefly describe your document"
                         className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                        value={documentDescription}
+                        onChange={(e) => setDocumentDescription(e.target.value)}
+                      />
+                      <AISuggestions
+                        field="description"
+                        value={documentDescription}
+                        onSuggestionSelect={(suggestion) => setDocumentDescription(suggestion)}
                       />
                     </div>
                   </div>
@@ -217,6 +251,13 @@ export default function UploadPage() {
                         id="image-title"
                         placeholder="Enter the title of your image"
                         className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                        value={imageTitle}
+                        onChange={(e) => setImageTitle(e.target.value)}
+                      />
+                      <AISuggestions
+                        field="title"
+                        value={imageTitle}
+                        onSuggestionSelect={(suggestion) => setImageTitle(suggestion)}
                       />
                     </div>
                     <div className="space-y-2">
@@ -227,6 +268,13 @@ export default function UploadPage() {
                         id="image-description"
                         placeholder="Briefly describe your image"
                         className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                        value={imageDescription}
+                        onChange={(e) => setImageDescription(e.target.value)}
+                      />
+                      <AISuggestions
+                        field="description"
+                        value={imageDescription}
+                        onSuggestionSelect={(suggestion) => setImageDescription(suggestion)}
                       />
                     </div>
                   </div>
@@ -266,6 +314,13 @@ export default function UploadPage() {
                         id="audio-title"
                         placeholder="Enter the title of your audio"
                         className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                        value={audioTitle}
+                        onChange={(e) => setAudioTitle(e.target.value)}
+                      />
+                      <AISuggestions
+                        field="title"
+                        value={audioTitle}
+                        onSuggestionSelect={(suggestion) => setAudioTitle(suggestion)}
                       />
                     </div>
                     <div className="space-y-2">
@@ -276,6 +331,13 @@ export default function UploadPage() {
                         id="audio-description"
                         placeholder="Briefly describe your audio"
                         className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                        value={audioDescription}
+                        onChange={(e) => setAudioDescription(e.target.value)}
+                      />
+                      <AISuggestions
+                        field="description"
+                        value={audioDescription}
+                        onSuggestionSelect={(suggestion) => setAudioDescription(suggestion)}
                       />
                     </div>
                   </div>
@@ -315,6 +377,13 @@ export default function UploadPage() {
                         id="code-title"
                         placeholder="Enter the title of your code"
                         className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                        value={codeTitle}
+                        onChange={(e) => setCodeTitle(e.target.value)}
+                      />
+                      <AISuggestions
+                        field="title"
+                        value={codeTitle}
+                        onSuggestionSelect={(suggestion) => setCodeTitle(suggestion)}
                       />
                     </div>
                     <div className="space-y-2">
@@ -325,6 +394,13 @@ export default function UploadPage() {
                         id="code-description"
                         placeholder="Briefly describe your code"
                         className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                        value={codeDescription}
+                        onChange={(e) => setCodeDescription(e.target.value)}
+                      />
+                      <AISuggestions
+                        field="description"
+                        value={codeDescription}
+                        onSuggestionSelect={(suggestion) => setCodeDescription(suggestion)}
                       />
                     </div>
                   </div>
@@ -371,6 +447,13 @@ export default function UploadPage() {
                         id="video-title"
                         placeholder="Enter the title of your video"
                         className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                        value={videoTitle}
+                        onChange={(e) => setVideoTitle(e.target.value)}
+                      />
+                      <AISuggestions
+                        field="title"
+                        value={videoTitle}
+                        onSuggestionSelect={(suggestion) => setVideoTitle(suggestion)}
                       />
                     </div>
                     <div className="space-y-2">
@@ -381,6 +464,13 @@ export default function UploadPage() {
                         id="video-description"
                         placeholder="Briefly describe your video"
                         className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                        value={videoDescription}
+                        onChange={(e) => setVideoDescription(e.target.value)}
+                      />
+                      <AISuggestions
+                        field="description"
+                        value={videoDescription}
+                        onSuggestionSelect={(suggestion) => setVideoDescription(suggestion)}
                       />
                     </div>
                   </div>

@@ -59,6 +59,13 @@ export default function Home() {
                 Sign In
               </Button>
             </Link>
+            <div className="flex sm:hidden">
+              <Link href="/signup">
+                <Button size="sm" variant="outline" className="border-purple-200 text-purple-600 hover:bg-purple-50">
+                  Sign Up
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </header>
@@ -170,20 +177,20 @@ export default function Home() {
                 thousands of creators who trust us with their most valuable assets.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4 px-4">
-                <Link href="/upload">
+                <Link href="/upload" className="w-full sm:w-auto">
                   <Button
                     size="lg"
-                    className="w-full sm:w-auto gap-2 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 shadow-xl text-lg px-8 py-6"
+                    className="w-full gap-2 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 shadow-xl text-base sm:text-lg px-6 py-5 sm:px-8 sm:py-6"
                   >
                     <Upload className="h-5 w-5" />
                     Upload Your Work
                   </Button>
                 </Link>
-                <Link href="/search">
+                <Link href="/search" className="w-full sm:w-auto">
                   <Button
                     size="lg"
                     variant="outline"
-                    className="w-full sm:w-auto gap-2 border-purple-300 text-purple-600 hover:bg-purple-50 text-lg px-8 py-6"
+                    className="w-full gap-2 border-purple-300 text-purple-600 hover:bg-purple-50 text-base sm:text-lg px-6 py-5 sm:px-8 sm:py-6"
                   >
                     <Search className="h-5 w-5" />
                     Search Files

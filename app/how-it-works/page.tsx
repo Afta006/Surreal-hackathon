@@ -41,6 +41,13 @@ export default function HowItWorksPage() {
                 Sign In
               </Button>
             </Link>
+            <div className="flex sm:hidden">
+              <Link href="/signup">
+                <Button size="sm" variant="outline" className="border-purple-200 text-purple-600 hover:bg-purple-50">
+                  Sign Up
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </header>
