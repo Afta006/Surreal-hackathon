@@ -140,48 +140,48 @@ export default function UploadPage() {
 
             <CardContent className="p-4 sm:p-6 lg:p-8">
               <Tabs defaultValue="document" className="w-full">
-                <TabsList className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 mb-8 sm:mb-12 bg-gradient-to-r from-purple-100 to-cyan-100 p-1 rounded-xl w-full">
+                <TabsList className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 mb-16 sm:mb-20 lg:mb-24 bg-gradient-to-r from-purple-100 to-cyan-100 p-1 rounded-xl w-full gap-1">
                   <TabsTrigger
                     value="document"
-                    className="flex flex-col items-center gap-1 sm:gap-2 py-2 sm:py-3 lg:py-4 data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=active]:text-purple-600 rounded-lg transition-all text-xs sm:text-sm"
+                    className="flex flex-col items-center gap-1 sm:gap-2 py-4 sm:py-5 lg:py-6 data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=active]:text-purple-600 rounded-lg transition-all text-xs sm:text-sm min-h-[70px] sm:min-h-[80px] lg:min-h-[90px]"
                   >
                     <FileText className="h-4 w-4 sm:h-5 sm:w-5" />
-                    <span className="font-medium">Document</span>
+                    <span className="font-medium leading-tight">Document</span>
                   </TabsTrigger>
                   <TabsTrigger
                     value="image"
-                    className="flex flex-col items-center gap-1 sm:gap-2 py-2 sm:py-3 lg:py-4 data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=active]:text-purple-600 rounded-lg transition-all text-xs sm:text-sm"
+                    className="flex flex-col items-center gap-1 sm:gap-2 py-4 sm:py-5 lg:py-6 data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=active]:text-purple-600 rounded-lg transition-all text-xs sm:text-sm min-h-[70px] sm:min-h-[80px] lg:min-h-[90px]"
                   >
                     <ImageIcon className="h-4 w-4 sm:h-5 sm:w-5" />
-                    <span className="font-medium">Image</span>
+                    <span className="font-medium leading-tight">Image</span>
                   </TabsTrigger>
                   <TabsTrigger
                     value="audio"
-                    className="flex flex-col items-center gap-1 sm:gap-2 py-2 sm:py-3 lg:py-4 data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=active]:text-purple-600 rounded-lg transition-all text-xs sm:text-sm"
+                    className="flex flex-col items-center gap-1 sm:gap-2 py-4 sm:py-5 lg:py-6 data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=active]:text-purple-600 rounded-lg transition-all text-xs sm:text-sm min-h-[70px] sm:min-h-[80px] lg:min-h-[90px]"
                   >
                     <Music className="h-4 w-4 sm:h-5 sm:w-5" />
-                    <span className="font-medium">Audio</span>
+                    <span className="font-medium leading-tight">Audio</span>
                   </TabsTrigger>
                   <TabsTrigger
                     value="code"
-                    className="flex flex-col items-center gap-1 sm:gap-2 py-2 sm:py-3 lg:py-4 data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=active]:text-purple-600 rounded-lg transition-all text-xs sm:text-sm"
+                    className="flex flex-col items-center gap-1 sm:gap-2 py-4 sm:py-5 lg:py-6 data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=active]:text-purple-600 rounded-lg transition-all text-xs sm:text-sm min-h-[70px] sm:min-h-[80px] lg:min-h-[90px]"
                   >
                     <Code className="h-4 w-4 sm:h-5 sm:w-5" />
-                    <span className="font-medium">Code</span>
+                    <span className="font-medium leading-tight">Code</span>
                   </TabsTrigger>
                   <TabsTrigger
                     value="video"
-                    className="flex flex-col items-center gap-1 sm:gap-2 py-2 sm:py-3 lg:py-4 data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=active]:text-purple-600 rounded-lg transition-all text-xs sm:text-sm col-span-2 sm:col-span-1"
+                    className="flex flex-col items-center gap-1 sm:gap-2 py-4 sm:py-5 lg:py-6 data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=active]:text-purple-600 rounded-lg transition-all text-xs sm:text-sm col-span-2 sm:col-span-1 min-h-[70px] sm:min-h-[80px] lg:min-h-[90px]"
                   >
                     <Film className="h-4 w-4 sm:h-5 sm:w-5" />
-                    <span className="font-medium">Video</span>
+                    <span className="font-medium leading-tight">Video</span>
                   </TabsTrigger>
                 </TabsList>
 
-                <TabsContent value="document" className="space-y-6 mt-8 sm:mt-12">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-6 mb-8">
+                <TabsContent value="document" className="space-y-6 mt-20 sm:mt-24 lg:mt-28">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-12 mb-16">
                     <div className="space-y-2 relative">
-                      <Label htmlFor="title" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
+                      <Label htmlFor="title" className="text-gray-700 font-medium text-sm sm:text-base mt-6 mb-3 block">
                         Title of Work
                       </Label>
                       <Input
@@ -200,7 +200,10 @@ export default function UploadPage() {
                       </div>
                     </div>
                     <div className="space-y-2 relative">
-                      <Label htmlFor="description" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
+                      <Label
+                        htmlFor="description"
+                        className="text-gray-700 font-medium text-sm sm:text-base mt-6 mb-3 block"
+                      >
                         Description
                       </Label>
                       <Input
@@ -220,7 +223,7 @@ export default function UploadPage() {
                     </div>
                   </div>
                   <div className="space-y-2 pt-8">
-                    <Label htmlFor="file" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
+                    <Label htmlFor="file" className="text-gray-700 font-medium text-sm sm:text-base mt-6 mb-3 block">
                       Upload Document
                     </Label>
                     <div className="border-2 border-dashed border-purple-300 rounded-xl p-6 sm:p-8 lg:p-12 text-center bg-gradient-to-br from-purple-50 to-blue-50 hover:from-purple-100 hover:to-blue-100 transition-all duration-300">
@@ -245,10 +248,13 @@ export default function UploadPage() {
                   </div>
                 </TabsContent>
 
-                <TabsContent value="image" className="space-y-6 mt-8 sm:mt-12">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-6 mb-8">
+                <TabsContent value="image" className="space-y-6 mt-20 sm:mt-24 lg:mt-28">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-12 mb-16">
                     <div className="space-y-2 relative">
-                      <Label htmlFor="image-title" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
+                      <Label
+                        htmlFor="image-title"
+                        className="text-gray-700 font-medium text-sm sm:text-base mt-6 mb-3 block"
+                      >
                         Title of Work
                       </Label>
                       <Input
@@ -269,7 +275,7 @@ export default function UploadPage() {
                     <div className="space-y-2 relative">
                       <Label
                         htmlFor="image-description"
-                        className="text-gray-700 font-medium text-sm sm:text-base mt-2"
+                        className="text-gray-700 font-medium text-sm sm:text-base mt-6 mb-3 block"
                       >
                         Description
                       </Label>
@@ -290,7 +296,10 @@ export default function UploadPage() {
                     </div>
                   </div>
                   <div className="space-y-2 pt-8">
-                    <Label htmlFor="image-file" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
+                    <Label
+                      htmlFor="image-file"
+                      className="text-gray-700 font-medium text-sm sm:text-base mt-6 mb-3 block"
+                    >
                       Upload Image
                     </Label>
                     <div className="border-2 border-dashed border-cyan-300 rounded-xl p-6 sm:p-8 lg:p-12 text-center bg-gradient-to-br from-cyan-50 to-blue-50 hover:from-cyan-100 hover:to-blue-100 transition-all duration-300">
@@ -315,10 +324,13 @@ export default function UploadPage() {
                   </div>
                 </TabsContent>
 
-                <TabsContent value="audio" className="space-y-6 mt-8 sm:mt-12">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-6 mb-8">
+                <TabsContent value="audio" className="space-y-6 mt-20 sm:mt-24 lg:mt-28">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-12 mb-16">
                     <div className="space-y-2 relative">
-                      <Label htmlFor="audio-title" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
+                      <Label
+                        htmlFor="audio-title"
+                        className="text-gray-700 font-medium text-sm sm:text-base mt-6 mb-3 block"
+                      >
                         Title of Work
                       </Label>
                       <Input
@@ -339,7 +351,7 @@ export default function UploadPage() {
                     <div className="space-y-2 relative">
                       <Label
                         htmlFor="audio-description"
-                        className="text-gray-700 font-medium text-sm sm:text-base mt-2"
+                        className="text-gray-700 font-medium text-sm sm:text-base mt-6 mb-3 block"
                       >
                         Description
                       </Label>
@@ -360,7 +372,10 @@ export default function UploadPage() {
                     </div>
                   </div>
                   <div className="space-y-2 pt-8">
-                    <Label htmlFor="audio-file" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
+                    <Label
+                      htmlFor="audio-file"
+                      className="text-gray-700 font-medium text-sm sm:text-base mt-6 mb-3 block"
+                    >
                       Upload Audio
                     </Label>
                     <div className="border-2 border-dashed border-emerald-300 rounded-xl p-6 sm:p-8 lg:p-12 text-center bg-gradient-to-br from-emerald-50 to-teal-50 hover:from-emerald-100 hover:to-teal-100 transition-all duration-300">
@@ -385,10 +400,13 @@ export default function UploadPage() {
                   </div>
                 </TabsContent>
 
-                <TabsContent value="code" className="space-y-6 mt-8 sm:mt-12">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-6 mb-8">
+                <TabsContent value="code" className="space-y-6 mt-20 sm:mt-24 lg:mt-28">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-12 mb-16">
                     <div className="space-y-2 relative">
-                      <Label htmlFor="code-title" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
+                      <Label
+                        htmlFor="code-title"
+                        className="text-gray-700 font-medium text-sm sm:text-base mt-6 mb-3 block"
+                      >
                         Title of Work
                       </Label>
                       <Input
@@ -407,7 +425,10 @@ export default function UploadPage() {
                       </div>
                     </div>
                     <div className="space-y-2 relative">
-                      <Label htmlFor="code-description" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
+                      <Label
+                        htmlFor="code-description"
+                        className="text-gray-700 font-medium text-sm sm:text-base mt-6 mb-3 block"
+                      >
                         Description
                       </Label>
                       <Input
@@ -427,7 +448,10 @@ export default function UploadPage() {
                     </div>
                   </div>
                   <div className="space-y-2 pt-8">
-                    <Label htmlFor="code-file" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
+                    <Label
+                      htmlFor="code-file"
+                      className="text-gray-700 font-medium text-sm sm:text-base mt-6 mb-3 block"
+                    >
                       Upload Code
                     </Label>
                     <div className="border-2 border-dashed border-orange-300 rounded-xl p-6 sm:p-8 lg:p-12 text-center bg-gradient-to-br from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100 transition-all duration-300">
@@ -459,10 +483,13 @@ export default function UploadPage() {
                   </div>
                 </TabsContent>
 
-                <TabsContent value="video" className="space-y-6 mt-8 sm:mt-12">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-6 mb-8">
+                <TabsContent value="video" className="space-y-6 mt-20 sm:mt-24 lg:mt-28">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-12 mb-16">
                     <div className="space-y-2 relative">
-                      <Label htmlFor="video-title" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
+                      <Label
+                        htmlFor="video-title"
+                        className="text-gray-700 font-medium text-sm sm:text-base mt-6 mb-3 block"
+                      >
                         Title of Work
                       </Label>
                       <Input
@@ -483,7 +510,7 @@ export default function UploadPage() {
                     <div className="space-y-2 relative">
                       <Label
                         htmlFor="video-description"
-                        className="text-gray-700 font-medium text-sm sm:text-base mt-2"
+                        className="text-gray-700 font-medium text-sm sm:text-base mt-6 mb-3 block"
                       >
                         Description
                       </Label>
@@ -504,7 +531,10 @@ export default function UploadPage() {
                     </div>
                   </div>
                   <div className="space-y-2 pt-8">
-                    <Label htmlFor="video-file" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
+                    <Label
+                      htmlFor="video-file"
+                      className="text-gray-700 font-medium text-sm sm:text-base mt-6 mb-3 block"
+                    >
                       Upload Video
                     </Label>
                     <div className="border-2 border-dashed border-pink-300 rounded-xl p-6 sm:p-8 lg:p-12 text-center bg-gradient-to-br from-pink-50 to-rose-50 hover:from-pink-100 hover:to-rose-100 transition-all duration-300">
