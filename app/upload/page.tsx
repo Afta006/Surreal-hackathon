@@ -140,7 +140,7 @@ export default function UploadPage() {
 
             <CardContent className="p-4 sm:p-6 lg:p-8">
               <Tabs defaultValue="document" className="w-full">
-                <TabsList className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 mb-8 bg-gradient-to-r from-purple-100 to-cyan-100 p-1 rounded-xl w-full">
+                <TabsList className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 mb-12 bg-gradient-to-r from-purple-100 to-cyan-100 p-1 rounded-xl w-full">
                   <TabsTrigger
                     value="document"
                     className="flex flex-col items-center gap-1 sm:gap-2 py-2 sm:py-3 lg:py-4 data-[state=active]:bg-white data-[state=active]:shadow-md data-[state=active]:text-purple-600 rounded-lg transition-all text-xs sm:text-sm"
@@ -178,7 +178,7 @@ export default function UploadPage() {
                   </TabsTrigger>
                 </TabsList>
 
-                <TabsContent value="document" className="space-y-8 mt-8 pb-8">
+                <TabsContent value="document" className="space-y-6 mt-12">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-6 mb-8">
                     <div className="space-y-2 relative">
                       <Label htmlFor="title" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
@@ -245,7 +245,7 @@ export default function UploadPage() {
                   </div>
                 </TabsContent>
 
-                <TabsContent value="document" className="space-y-8 mt-8 pb-8">
+                <TabsContent value="image" className="space-y-6 mt-12">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-6 mb-8">
                     <div className="space-y-2 relative">
                       <Label htmlFor="image-title" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
@@ -315,7 +315,7 @@ export default function UploadPage() {
                   </div>
                 </TabsContent>
 
-                <TabsContent value="document" className="space-y-8 mt-8 pb-8">
+                <TabsContent value="audio" className="space-y-6 mt-12">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-6 mb-8">
                     <div className="space-y-2 relative">
                       <Label htmlFor="audio-title" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
@@ -385,7 +385,7 @@ export default function UploadPage() {
                   </div>
                 </TabsContent>
 
-                <TabsContent value="document" className="space-y-8 mt-8 pb-8">
+                <TabsContent value="code" className="space-y-6 mt-12">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-6 mb-8">
                     <div className="space-y-2 relative">
                       <Label htmlFor="code-title" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
@@ -459,7 +459,7 @@ export default function UploadPage() {
                   </div>
                 </TabsContent>
 
-                <TabsContent value="document" className="space-y-8 mt-8 pb-8">
+                <TabsContent value="video" className="space-y-6 mt-12">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-6 mb-8">
                     <div className="space-y-2 relative">
                       <Label htmlFor="video-title" className="text-gray-700 font-medium text-sm sm:text-base mt-2">
