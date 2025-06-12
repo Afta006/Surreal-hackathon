@@ -1,16 +1,49 @@
 "use client"
 
 import Link from "next/link"
+import { useEffect, useState } from "react"
+import { ethers } from "ethers"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Shield, Sparkles, Eye, EyeOff, CheckCircle } from "lucide-react"
-import { useState } from "react"
 
 export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [walletAddress, setWalletAddress] = useState("")
+
+  const connectWithMetaMask = async () => {
+    try {
+      if (!window.ethereum) return alert("MetaMask is not installed!")
+
+      const provider = new ethers.BrowserProvider(window.ethereum)
+      const signer = await provider.getSigner()
+      const address = await signer.getAddress()
+
+      // Optional: Ask user to sign a message
+      const message = "Please sign this message to verify your wallet."
+      const signature = await signer.signMessage(message)
+
+      // Save to backend (if needed)
+      const res = await fetch("/api/registerWallet", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ address, signature }),
+      })
+
+      if (res.ok) {
+        setWalletAddress(address)
+        alert("Wallet connected and registered!")
+      } else {
+        alert("Failed to register wallet.")
+      }
+    } catch (error) {
+      console.error(error)
+      alert("Wallet connection failed.")
+    }
+  }
 
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50">
@@ -72,120 +105,66 @@ export default function SignupPage() {
               <form className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="firstName" className="text-gray-700 font-medium">
-                      First Name
-                    </Label>
-                    <Input
-                      id="firstName"
-                      placeholder="John"
-                      className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
-                      required
-                    />
+                    <Label htmlFor="firstName" className="text-gray-700 font-medium">First Name</Label>
+                    <Input id="firstName" placeholder="John" className="border-purple-200 focus:border-purple-400 focus:ring-purple-400" required />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="lastName" className="text-gray-700 font-medium">
-                      Last Name
-                    </Label>
-                    <Input
-                      id="lastName"
-                      placeholder="Doe"
-                      className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
-                      required
-                    />
+                    <Label htmlFor="lastName" className="text-gray-700 font-medium">Last Name</Label>
+                    <Input id="lastName" placeholder="Doe" className="border-purple-200 focus:border-purple-400 focus:ring-purple-400" required />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-gray-700 font-medium">
-                    Email
-                  </Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="john@example.com"
-                    className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
-                    required
-                  />
+                  <Label htmlFor="email" className="text-gray-700 font-medium">Email</Label>
+                  <Input id="email" type="email" placeholder="john@example.com" className="border-purple-200 focus:border-purple-400 focus:ring-purple-400" required />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="password" className="text-gray-700 font-medium">
-                    Password
-                  </Label>
+                  <Label htmlFor="password" className="text-gray-700 font-medium">Password</Label>
                   <div className="relative">
-                    <Input
-                      id="password"
-                      type={showPassword ? "text" : "password"}
-                      placeholder="Create a strong password"
-                      className="border-purple-200 focus:border-purple-400 focus:ring-purple-400 pr-10"
-                      required
-                    />
-                    <button
-                      type="button"
-                      className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                      onClick={() => setShowPassword(!showPassword)}
-                    >
-                      {showPassword ? (
-                        <EyeOff className="h-4 w-4 text-gray-400" />
-                      ) : (
-                        <Eye className="h-4 w-4 text-gray-400" />
-                      )}
+                    <Input id="password" type={showPassword ? "text" : "password"} placeholder="Create a strong password" className="border-purple-200 focus:border-purple-400 focus:ring-purple-400 pr-10" required />
+                    <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center" onClick={() => setShowPassword(!showPassword)}>
+                      {showPassword ? <EyeOff className="h-4 w-4 text-gray-400" /> : <Eye className="h-4 w-4 text-gray-400" />}
                     </button>
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="confirmPassword" className="text-gray-700 font-medium">
-                    Confirm Password
-                  </Label>
+                  <Label htmlFor="confirmPassword" className="text-gray-700 font-medium">Confirm Password</Label>
                   <div className="relative">
-                    <Input
-                      id="confirmPassword"
-                      type={showConfirmPassword ? "text" : "password"}
-                      placeholder="Confirm your password"
-                      className="border-purple-200 focus:border-purple-400 focus:ring-purple-400 pr-10"
-                      required
-                    />
-                    <button
-                      type="button"
-                      className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    >
-                      {showConfirmPassword ? (
-                        <EyeOff className="h-4 w-4 text-gray-400" />
-                      ) : (
-                        <Eye className="h-4 w-4 text-gray-400" />
-                      )}
+                    <Input id="confirmPassword" type={showConfirmPassword ? "text" : "password"} placeholder="Confirm your password" className="border-purple-200 focus:border-purple-400 focus:ring-purple-400 pr-10" required />
+                    <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                      {showConfirmPassword ? <EyeOff className="h-4 w-4 text-gray-400" /> : <Eye className="h-4 w-4 text-gray-400" />}
                     </button>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-2">
-                  <input
-                    id="terms"
-                    type="checkbox"
-                    className="rounded border-purple-300 text-purple-600 focus:ring-purple-500 mt-1"
-                    required
-                  />
+                  <input id="terms" type="checkbox" className="rounded border-purple-300 text-purple-600 focus:ring-purple-500 mt-1" required />
                   <Label htmlFor="terms" className="text-sm text-gray-600 leading-relaxed">
                     I agree to the{" "}
-                    <Link href="#" className="text-purple-600 hover:text-purple-800 underline">
-                      Terms of Service
-                    </Link>{" "}
+                    <Link href="#" className="text-purple-600 hover:text-purple-800 underline">Terms of Service</Link>{" "}
                     and{" "}
-                    <Link href="#" className="text-purple-600 hover:text-purple-800 underline">
-                      Privacy Policy
-                    </Link>
+                    <Link href="#" className="text-purple-600 hover:text-purple-800 underline">Privacy Policy</Link>
                   </Label>
                 </div>
 
-                <Button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 shadow-lg"
-                >
+                <Button type="submit" className="w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 shadow-lg">
                   Create Account
                 </Button>
               </form>
+
+              <div className="text-center">
+                <p className="text-sm text-gray-600">or</p>
+                <Button onClick={connectWithMetaMask} variant="outline" className="w-full mt-2 border-cyan-300 text-cyan-700 hover:bg-cyan-50">
+                  Sign up with MetaMask
+                </Button>
+                {walletAddress && (
+                  <p className="text-xs text-center mt-2 text-emerald-600">
+                    Connected: {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}
+                  </p>
+                )}
+              </div>
 
               <div className="text-center">
                 <span className="text-sm text-gray-600">
